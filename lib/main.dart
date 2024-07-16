@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:zimbo_play/services/router/routes.dart';
 
 void main() {
   runApp(const MyApp());
@@ -7,19 +8,15 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'Zimbo Play App',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: Container(
-        alignment: Alignment.center,
-        child: const Text("App Zimbo"),
-      ),
+      routerConfig: router,
     );
   }
 }
