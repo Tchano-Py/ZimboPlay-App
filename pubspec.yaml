@@ -27,6 +27,9 @@ flutter:
   assets:
     - assets/image/background.png
     - assets/image/vivaplay-logotipo.png
+    - assets/image/vivaplay-logotipo-login.png
+    - assets/image/Google-APP.png
+    - assets/image/facebook.png
 
   #  fonts:
   #   - family: Schyler

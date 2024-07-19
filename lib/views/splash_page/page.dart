@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class PageSplash extends StatefulWidget {
   const PageSplash({super.key});
@@ -12,6 +13,13 @@ class _PageSplashState extends State<PageSplash> with TickerProviderStateMixin {
 
   @override
   void initState() {
+    super.initState();
+
+    // Pré-carregar a imagem de fundo
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      precacheImage(const AssetImage("assets/image/background.png"), context);
+    });
+
     controller = AnimationController(
       vsync: this,
       duration: const Duration(seconds: 5),
@@ -19,7 +27,12 @@ class _PageSplashState extends State<PageSplash> with TickerProviderStateMixin {
         setState(() {});
       });
     controller.repeat(reverse: true);
-    super.initState();
+
+    Future.delayed(const Duration(seconds: 5), () {
+      if (mounted) {
+        context.go('/login');
+      }
+    });
   }
 
   @override
@@ -41,7 +54,7 @@ class _PageSplashState extends State<PageSplash> with TickerProviderStateMixin {
           ),
         ),
         child: Padding(
-          padding: const EdgeInsets.only(left: 10,bottom: 32.0),
+          padding: const EdgeInsets.only(left: 10, bottom: 32.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.end,
             crossAxisAlignment: CrossAxisAlignment.start,
