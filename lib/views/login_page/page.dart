@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:zimbo_play/views/widget/bg_blur.dart';
 
 class PageLogin extends StatefulWidget {
@@ -219,9 +220,7 @@ class _PageLoginState extends State<PageLogin> {
                           ),
                           onPressed: () {
                             if (_formKey.currentState!.validate()) {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(content: Text('Sucesso')),
-                              );
+                              context.goNamed('home_page');
                             }
                           },
                           child: const Text(
