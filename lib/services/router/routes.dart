@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
-import 'package:zimbo_play/views/home_page/page.dart';
+import 'package:zimbo_play/views/layout.dart';
 import 'package:zimbo_play/views/login_page/page.dart';
 import 'package:zimbo_play/views/splash_page/page.dart';
 
@@ -53,6 +53,16 @@ final router = GoRouter(
       ),
     ),
     GoRoute(
+      path: '/layout_main',
+      name: 'layout_main',
+      pageBuilder: (BuildContext context, GoRouterState state) =>
+          myPageTransition<void>(
+        context: context,
+        state: state,
+        child: const LayoutMain(),
+      ),
+    ),
+    /* GoRoute(
       path: '/home',
       name: 'home_page',
       pageBuilder: (BuildContext context, GoRouterState state) =>
@@ -61,6 +71,6 @@ final router = GoRouter(
         state: state,
         child: const PageHome(),
       ),
-    ),
+    ), */
   ],
 );

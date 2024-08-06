@@ -220,7 +220,7 @@ class _PageLoginState extends State<PageLogin> {
                           ),
                           onPressed: () {
                             if (_formKey.currentState!.validate()) {
-                              context.goNamed('home_page');
+                              context.goNamed('layout_main');
                             }
                           },
                           child: const Text(
