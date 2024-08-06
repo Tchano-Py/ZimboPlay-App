@@ -1,7 +1,7 @@
 name: zimbo_play
 description: "A new Flutter project."
 
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: 'none'
 
 version: 1.0.0+1
 
@@ -44,6 +44,13 @@ flutter:
     - assets/image/noticias-solid.png
     - assets/image/procurar.png
     - assets/image/procurar-solid.png 
+    - assets/image/Ucrânia-pede-cessar-fogo.jpeg
+    - assets/image/image-0.jpg
+    - assets/image/image-1.jpg
+    - assets/image/image-2.jpg
+    - assets/image/image-3.jpg
+    - assets/image/image-4.jpg
+    - assets/image/image-5.jpg
 
   #  fonts:
   #   - family: Schyler
