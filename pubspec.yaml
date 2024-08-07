@@ -51,6 +51,9 @@ flutter:
     - assets/image/image-3.jpg
     - assets/image/image-4.jpg
     - assets/image/image-5.jpg
+    - assets/image/noticia-destaque.png
+    - assets/image/noticia-1.png
+    - assets/image/noticia-2.png
 
   #  fonts:
   #   - family: Schyler

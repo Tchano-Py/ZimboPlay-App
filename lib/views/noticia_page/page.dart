@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:zimbo_play/views/noticia_page/components/tab_component.dart';
+import 'package:zimbo_play/views/widget/my_card.dart';
 
 class PageNoticia extends StatefulWidget {
   const PageNoticia({super.key});
@@ -10,11 +12,96 @@ class PageNoticia extends StatefulWidget {
 class _PageNoticiaState extends State<PageNoticia> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.only(top: 30),
-      child: const SingleChildScrollView(
-        child: Center(
-          child: Text('Noticias'),
+    return DefaultTabController(
+      length: 5,
+      child: Container(
+        padding: const EdgeInsets.only(top: 30),
+        child: SingleChildScrollView(
+          child: Column(
+            children: <Widget>[
+              const SizedBox(height: 120.0),
+              Container(
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height * .85,
+                padding: const EdgeInsets.all(18.0),
+                decoration: const BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(20),
+                    topRight: Radius.circular(20),
+                  ),
+                  color: Colors.white,
+                ),
+                child: Column(
+                  children: <Widget>[
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                            vertical: 4.0,
+                            horizontal: 16.0,
+                          ),
+                          decoration: const BoxDecoration(
+                            color: Color.fromRGBO(57, 81, 123, 1),
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(30),
+                            ),
+                          ),
+                          child: const Text(
+                            'Debate Zimbo',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                        const Text(
+                          'Edição Especial',
+                          style: TextStyle(
+                            fontWeight: FontWeight.w500,
+                            color: Color.fromRGBO(57, 81, 123, 1),
+                            fontSize: 16,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 15),
+                    const MyCard(
+                      imagePath: 'assets/image/noticia-destaque.png',
+                      title: 'Amílcar recebe JLO',
+                      date: 'Ter, 08 de Março de 2022',
+                    ),
+                    const SizedBox(height: 15),
+                    const TabBar(
+                      isScrollable: true,
+                      labelColor: Color.fromRGBO(57, 81, 123, 1),
+                      unselectedLabelColor: Color.fromRGBO(34, 34, 34, 0.3),
+                      indicatorColor: Color.fromRGBO(57, 81, 123, 1),
+                      tabs: [
+                        Tab(text: 'Política'),
+                        Tab(text: 'Tecnologia'),
+                        Tab(text: 'Cultura'),
+                        Tab(text: 'Saúde'),
+                        Tab(text: 'Desporto'),
+                      ],
+                    ),
+                    const Flexible(
+                      child: TabBarView(
+                        children: [
+                          TabComponent(type: 'Política'),
+                          TabComponent(type: 'Tecnologia'),
+                          TabComponent(type: 'Cultura'),
+                          TabComponent(type: 'Saúde'),
+                          TabComponent(type: 'Desporto'),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
