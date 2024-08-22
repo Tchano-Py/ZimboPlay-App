@@ -1,6 +1,9 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flick_video_player/flick_video_player.dart';
 import 'package:video_player/video_player.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:zimbo_play/views/ao_vivo_page/components/expandable_text.dart';
 import 'package:zimbo_play/views/ao_vivo_page/components/list_program.dart';
 
@@ -14,17 +17,33 @@ class PageAoVivo extends StatefulWidget {
 class _PageAoVivoState extends State<PageAoVivo> {
   late FlickManager _controller;
 
+  //Salvar o tempo do video(onde parai de ver)
+  void _saveVideoPosition(Duration position) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setInt('video_position', position.inSeconds);
+  }
+
+  //Pegar a última posição do video
+  void _loadVideoPosition() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    int? positionInSeconds = prefs.getInt('video_position');
+    if (positionInSeconds != null) {
+      _controller.flickVideoManager?.videoPlayerController
+          ?.seekTo(Duration(seconds: positionInSeconds));
+    }
+  }
+
   @override
   void initState() {
     super.initState();
     _controller = FlickManager(
-      videoPlayerController: VideoPlayerController.asset(
-        'assets/video/video_1.mp4',
-      )..initialize().then(
-          (_) {
-            setState(() {});
-          },
-        ),
+      videoPlayerController:
+          VideoPlayerController.asset('assets/video/video_1.mp4')
+            ..initialize().then((_) {
+              setState(() {
+                _loadVideoPosition();
+              });
+            }),
     );
   }
 
@@ -71,11 +90,31 @@ class _PageAoVivoState extends State<PageAoVivo> {
                                   .isInitialized ==
                               false)
                             Stack(
-                              alignment: Alignment.center,
+                              fit: StackFit.expand,
                               children: [
                                 Image.asset(
-                                    'assets/image/noticia-destaque.png'),
-                                const CircularProgressIndicator(),
+                                  'assets/image/fundo_video_1.jpeg',
+                                  fit: BoxFit.cover,
+                                ),
+                                BackdropFilter(
+                                  filter: ImageFilter.blur(
+                                    sigmaX: 4,
+                                    sigmaY: 4,
+                                  ),
+                                  child: Container(
+                                    color: const Color.fromRGBO(34, 34, 34, .4),
+                                  ),
+                                ),
+                                const Align(
+                                  alignment: Alignment.center,
+                                  child: SizedBox(
+                                    height: 30,
+                                    width: 30,
+                                    child: CircularProgressIndicator(
+                                      color: Color.fromRGBO(196, 144, 33, 1),
+                                    ),
+                                  ),
+                                ),
                               ],
                             ),
                         ],
@@ -177,6 +216,11 @@ class _PageAoVivoState extends State<PageAoVivo> {
 
   @override
   void dispose() {
+    final position =
+        _controller.flickVideoManager?.videoPlayerController?.value.position;
+    if (position != null) {
+      _saveVideoPosition(position);
+    }
     _controller.dispose();
     super.dispose();
   }
