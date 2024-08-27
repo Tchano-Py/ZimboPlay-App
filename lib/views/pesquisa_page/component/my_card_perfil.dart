@@ -31,7 +31,7 @@ class _MyCardPerfilState extends State<MyCardPerfil> {
             color: Color.fromRGBO(115, 117, 84, 1),
           ),
         ),
-        const SizedBox(height: 10),
+        const SizedBox(height: 8.0),
         Row(
           children: [
             SizedBox(

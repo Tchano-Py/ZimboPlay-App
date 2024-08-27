@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:zimbo_play/views/widget/my_card_perfil.dart';
+import 'package:zimbo_play/views/pesquisa_page/component/my_card_perfil.dart';
+import 'package:zimbo_play/views/pesquisa_page/component/lista_itens.dart';
 
 class PagePesquisa extends StatefulWidget {
   const PagePesquisa({super.key});
@@ -99,10 +100,34 @@ class _PagePesquisaState extends State<PagePesquisa> {
                   ),
                   const SizedBox(height: 24),
                   const MyCardPerfil(
-                      nome: "Marcelina Gonçalves",
-                      funcao: "Apresentadora",
-                      programa: "Jornal da Hora",
-                      foto: "assets/image/jornal_1.png")
+                    nome: "Marcelina Gonçalves",
+                    funcao: "Apresentadora",
+                    programa: "Jornal da Hora",
+                    foto: "assets/image/jornal_1.png",
+                  ),
+                  const SizedBox(height: 24),
+                  const ListaItens(
+                    titulo: "Programas relacionados",
+                    imagens: [
+                      'debate_livre.png', 
+                      'defesa_consumidor.jpeg', 
+                      'direito_ao_ponto.jpeg', 
+                      'esta_na_hora.jpg', 
+                      'Jornal_zimbo.jpeg', 
+                      'fala_angola_1.jpeg', 
+                    ],
+                  ),
+                  const SizedBox(height: 24),
+                  const ListaItens(
+                    titulo: "Outras pessoas viram",
+                    imagens: [ 
+                      'made_in_angola_0.webp', 
+                      'tarde_nossa.jpeg', 
+                      'turma.png', 
+                      'sexto_sentido.jpeg', 
+                      'desafio_zimbo.jpeg', 
+                    ],
+                  ),
                 ],
               ),
             ),
