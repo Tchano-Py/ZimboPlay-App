@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:zimbo_play/views/widget/my_card_perfil.dart';
 
 class PagePesquisa extends StatefulWidget {
   const PagePesquisa({super.key});
@@ -96,6 +97,12 @@ class _PagePesquisaState extends State<PagePesquisa> {
                       },
                     ),
                   ),
+                  const SizedBox(height: 24),
+                  const MyCardPerfil(
+                      nome: "Marcelina Gonçalves",
+                      funcao: "Apresentadora",
+                      programa: "Jornal da Hora",
+                      foto: "assets/image/jornal_1.png")
                 ],
               ),
             ),
