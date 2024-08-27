@@ -12,9 +12,94 @@ class _PagePesquisaState extends State<PagePesquisa> {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.only(top: 30),
-      child: const SingleChildScrollView(
-        child: Center(
-          child: Text('Pequisar'),
+      child: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            const SizedBox(height: 120.0),
+            Container(
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height * .85,
+              padding: const EdgeInsets.all(18.0),
+              decoration: const BoxDecoration(
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(20),
+                  topRight: Radius.circular(20),
+                ),
+                color: Colors.white,
+              ),
+              child: Column(
+                children: <Widget>[
+                  SizedBox(
+                    height: 40.0,
+                    child: SearchAnchor(
+                      viewBackgroundColor: Colors.white,
+                      isFullScreen: false,
+                      builder:
+                          (BuildContext context, SearchController controller) {
+                        return SearchBar(
+                          controller: controller,
+                          padding: const WidgetStatePropertyAll<EdgeInsets>(
+                            EdgeInsets.symmetric(horizontal: 16.0),
+                          ),
+                          elevation: const WidgetStatePropertyAll<double>(0.0),
+                          backgroundColor: const WidgetStatePropertyAll<Color>(
+                              Color.fromRGBO(34, 34, 34, 0.1)),
+                          shape: WidgetStatePropertyAll<RoundedRectangleBorder>(
+                            RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(18.0),
+                            ),
+                          ),
+                          onTap: () {
+                            controller.openView();
+                          },
+                          onChanged: (_) {
+                            controller.openView();
+                          },
+                          leading: Image.asset("assets/image/procurar_2.png"),
+                          trailing: <Widget>[
+                            Image.asset("assets/image/settings_sliders_1.png"),
+                          ],
+                        );
+                      },
+                      suggestionsBuilder:
+                          (BuildContext context, SearchController controller) {
+                        final List<String> programasZimbo = [
+                          'Sexto Sentido',
+                          'Jornal da Zimbo',
+                          'Grande Entrevista',
+                          'Conexões Zimbo',
+                          'Zimbo Debate',
+                          'Hora Quente',
+                          'Janela Aberta',
+                          'Revista Zimbo',
+                          'Fala Angola',
+                          'Bom Dia Angola',
+                          'Viva a Noite',
+                          'Especial Zimbo',
+                          'Zimbo no seu Bairro',
+                          'Conversas ao Sul',
+                          'Alerta Geral',
+                          'Angola ao Vivo',
+                        ];
+                        return List<ListTile>.generate(programasZimbo.length,
+                            (int index) {
+                          final String item = programasZimbo[index];
+                          return ListTile(
+                            title: Text(item),
+                            onTap: () {
+                              setState(() {
+                                controller.closeView(item);
+                              });
+                            },
+                          );
+                        });
+                      },
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
         ),
       ),
     );
