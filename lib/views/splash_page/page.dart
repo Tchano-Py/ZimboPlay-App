@@ -76,7 +76,7 @@ class _PageSplashState extends State<PageSplash> with TickerProviderStateMixin {
                   children: <Widget>[
                     FadeInUp(
                       animate: animate,
-                      duration: const Duration(milliseconds: 800),
+                      duration: const Duration(milliseconds: 650),
                       delay: const Duration(seconds: 1),
                       child: SizedBox(
                         width: 152,
@@ -95,7 +95,7 @@ class _PageSplashState extends State<PageSplash> with TickerProviderStateMixin {
                     ),
                     FadeInUp(
                       animate: animate,
-                      duration: const Duration(milliseconds: 1000),
+                      duration: const Duration(milliseconds: 800),
                       delay: const Duration(seconds: 1),
                       child: const Text(
                         "Por favor, aguarde...",
@@ -119,7 +119,7 @@ class _PageSplashState extends State<PageSplash> with TickerProviderStateMixin {
 }
 
 class Square extends StatelessWidget {
-  const Square({Key? key}) : super(key: key);
+  const Square({super.key});
   @override
   Widget build(BuildContext context) {
     return Container(
