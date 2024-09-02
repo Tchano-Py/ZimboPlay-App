@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:animate_do/animate_do.dart';
 
 class PageSplash extends StatefulWidget {
   const PageSplash({super.key});
@@ -10,6 +11,8 @@ class PageSplash extends StatefulWidget {
 
 class _PageSplashState extends State<PageSplash> with TickerProviderStateMixin {
   late AnimationController controller;
+
+  bool animate = true;
 
   @override
   void initState() {
@@ -59,34 +62,49 @@ class _PageSplashState extends State<PageSplash> with TickerProviderStateMixin {
             mainAxisAlignment: MainAxisAlignment.end,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Image.asset("assets/image/vivaplay-logotipo.png"),
+              FadeInUp(
+                animate: animate,
+                duration: const Duration(milliseconds: 500),
+                delay: const Duration(seconds: 1),
+                child: Image.asset("assets/image/vivaplay-logotipo.png"),
+              ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.end,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    SizedBox(
-                      width: 152,
-                      child: LinearProgressIndicator(
-                        backgroundColor:
-                            const Color.fromRGBO(196, 196, 196, .3),
-                        valueColor: const AlwaysStoppedAnimation<Color>(
-                            Color(0xFFC49021)),
-                        minHeight: 8,
-                        value: controller.value,
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(30)),
-                        semanticsLabel: 'Linear progress indicator',
+                    FadeInUp(
+                      animate: animate,
+                      duration: const Duration(milliseconds: 800),
+                      delay: const Duration(seconds: 1),
+                      child: SizedBox(
+                        width: 152,
+                        child: LinearProgressIndicator(
+                          backgroundColor:
+                              const Color.fromRGBO(196, 196, 196, .3),
+                          valueColor: const AlwaysStoppedAnimation<Color>(
+                              Color(0xFFC49021)),
+                          minHeight: 8,
+                          value: controller.value,
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(30)),
+                          semanticsLabel: 'Linear progress indicator',
+                        ),
                       ),
                     ),
-                    const Text(
-                      "Por favor, aguarde...",
-                      style: TextStyle(
-                        color: Color(0xFF737554),
-                        fontSize: 12,
-                        height: 2.03,
-                        fontWeight: FontWeight.w500,
+                    FadeInUp(
+                      animate: animate,
+                      duration: const Duration(milliseconds: 1000),
+                      delay: const Duration(seconds: 1),
+                      child: const Text(
+                        "Por favor, aguarde...",
+                        style: TextStyle(
+                          color: Color(0xFF737554),
+                          fontSize: 12,
+                          height: 2.03,
+                          fontWeight: FontWeight.w500,
+                        ),
                       ),
                     ),
                   ],
@@ -96,6 +114,18 @@ class _PageSplashState extends State<PageSplash> with TickerProviderStateMixin {
           ),
         ),
       ),
+    );
+  }
+}
+
+class Square extends StatelessWidget {
+  const Square({Key? key}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 50,
+      height: 50,
+      color: Colors.blueAccent,
     );
   }
 }
