@@ -21,26 +21,31 @@ class _TabComponentState extends State<TabComponent> {
         .where((noticia) => noticia.tipos.contains(widget.type))
         .toList();
 
-    return ListView.builder(
-      itemCount: noticiasFiltradas.length,
-      itemBuilder: (context, index) {
-        final noticia = noticiasFiltradas[index];
-        int time = 800 + (index * 100);
-        return FadeInDown(
-          animate: animate,
-          duration: Duration(milliseconds: time),
-          delay: const Duration(seconds: 0),
-          child: Padding(
-            padding: const EdgeInsets.only(bottom: 5.0),
-            child: MyCardItem(
-              image: noticia.image,
-              title: noticia.titulo,
-              time: noticia.data,
-              topic: noticia.tipos,
+    return Container(
+      color: Colors.white,
+      padding: const EdgeInsets.symmetric(horizontal: 18.0, vertical: 0),
+      child: ListView.builder(
+        padding: EdgeInsets.zero,
+        itemCount: noticiasFiltradas.length,
+        itemBuilder: (context, index) {
+          final noticia = noticiasFiltradas[index];
+          int time = 800 + (index * 100);
+          return FadeInDown(
+            animate: animate,
+            duration: Duration(milliseconds: time),
+            delay: const Duration(seconds: 0),
+            child: Padding(
+              padding: const EdgeInsets.only(bottom: 5.0),
+              child: MyCardItem(
+                image: noticia.image,
+                title: noticia.titulo,
+                time: noticia.data,
+                topic: noticia.tipos,
+              ),
             ),
-          ),
-        );
-      },
+          );
+        },
+      ),
     );
   }
 }

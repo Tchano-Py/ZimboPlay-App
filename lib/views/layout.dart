@@ -38,11 +38,11 @@ class _LayoutMainState extends State<LayoutMain> {
         child: Stack(
           children: <Widget>[
             _widgetpage[_selectedIndex],
-            const Positioned(
-              top: 42,
+            Positioned(
+              top: MediaQuery.of(context).size.height * .05,
               left: 0,
               right: 0,
-              child: MyAppBar(),
+              child: const MyAppBar(),
             ),
           ],
         ),

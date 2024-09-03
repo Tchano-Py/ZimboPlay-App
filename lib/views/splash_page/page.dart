@@ -31,7 +31,7 @@ class _PageSplashState extends State<PageSplash> with TickerProviderStateMixin {
       });
     controller.repeat(reverse: true);
 
-    Future.delayed(const Duration(seconds: 5), () {
+    Future.delayed(const Duration(seconds: 7), () {
       if (mounted) {
         context.go('/login');
       }
@@ -64,8 +64,8 @@ class _PageSplashState extends State<PageSplash> with TickerProviderStateMixin {
             children: <Widget>[
               FadeInUp(
                 animate: animate,
-                duration: const Duration(milliseconds: 500),
-                delay: const Duration(milliseconds: 500),
+                duration: const Duration(seconds: 1),
+                delay: const Duration(seconds: 1),
                 child: Image.asset("assets/image/vivaplay-logotipo.png"),
               ),
               Padding(
@@ -76,8 +76,8 @@ class _PageSplashState extends State<PageSplash> with TickerProviderStateMixin {
                   children: <Widget>[
                     FadeInUp(
                       animate: animate,
-                      duration: const Duration(milliseconds: 650),
-                      delay: const Duration(milliseconds: 500),
+                      duration: const Duration(seconds: 1),
+                      delay: const Duration(seconds: 1),
                       child: SizedBox(
                         width: 152,
                         child: LinearProgressIndicator(
@@ -95,8 +95,8 @@ class _PageSplashState extends State<PageSplash> with TickerProviderStateMixin {
                     ),
                     FadeInUp(
                       animate: animate,
-                      duration: const Duration(milliseconds: 800),
-                      delay: const Duration(milliseconds: 500),
+                      duration: const Duration(seconds: 1),
+                      delay: const Duration(seconds: 1),
                       child: const Text(
                         "Por favor, aguarde...",
                         style: TextStyle(
@@ -114,18 +114,6 @@ class _PageSplashState extends State<PageSplash> with TickerProviderStateMixin {
           ),
         ),
       ),
-    );
-  }
-}
-
-class Square extends StatelessWidget {
-  const Square({super.key});
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 50,
-      height: 50,
-      color: Colors.blueAccent,
     );
   }
 }

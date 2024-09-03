@@ -76,6 +76,7 @@ class _MyCardPerfilState extends State<MyCardPerfil> {
                           delay: const Duration(seconds: 0),
                           child: Text(
                             widget.nome,
+                            overflow: TextOverflow.ellipsis,
                             style: const TextStyle(
                               fontWeight: FontWeight.w700,
                               fontSize: 18,
@@ -100,6 +101,7 @@ class _MyCardPerfilState extends State<MyCardPerfil> {
                               const SizedBox(width: 5),
                               Text(
                                 widget.funcao,
+                                overflow: TextOverflow.ellipsis,
                                 style: const TextStyle(
                                   fontSize: 12,
                                   color: Color.fromRGBO(34, 34, 34, 0.3),
@@ -125,6 +127,7 @@ class _MyCardPerfilState extends State<MyCardPerfil> {
                               const SizedBox(width: 5),
                               Text(
                                 widget.programa,
+                                overflow: TextOverflow.ellipsis,
                                 style: const TextStyle(
                                   fontSize: 12,
                                   color: Color.fromRGBO(34, 34, 34, 0.3),
@@ -137,65 +140,70 @@ class _MyCardPerfilState extends State<MyCardPerfil> {
                     ),
                     Row(
                       children: [
-                        FadeInDown(
-                          animate: animate,
-                          duration: const Duration(milliseconds: 740),
-                          delay: const Duration(seconds: 0),
-                          child: SizedBox(
-                            height: 26.0,
-                            child: ElevatedButton(
-                              onPressed: () {},
-                              style: ElevatedButton.styleFrom(
-                                elevation: 0,
-                                backgroundColor:
-                                    const Color.fromRGBO(196, 144, 33, 1),
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(5.0),
+                        Expanded(
+                          child: FadeInDown(
+                            animate: animate,
+                            duration: const Duration(milliseconds: 740),
+                            delay: const Duration(seconds: 0),
+                            child: SizedBox(
+                              height: 26.0,
+                              child: ElevatedButton(
+                                onPressed: () {},
+                                style: ElevatedButton.styleFrom(
+                                  elevation: 0,
+                                  backgroundColor:
+                                      const Color.fromRGBO(196, 144, 33, 1),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(5.0),
+                                  ),
                                 ),
-                              ),
-                              child: const Text(
-                                "Perfil",
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w900,
-                                  fontSize: 12,
-                                  color: Colors.white,
+                                child: const Text(
+                                  "Perfil",
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w900,
+                                    fontSize: 12,
+                                    color: Colors.white,
+                                  ),
                                 ),
                               ),
                             ),
                           ),
                         ),
                         const SizedBox(width: 7),
-                        FadeInDown(
-                          animate: animate,
-                          duration: const Duration(milliseconds: 750),
-                          delay: const Duration(seconds: 0),
-                          child: SizedBox(
-                            height: 26.0,
-                            child: OutlinedButton(
-                              onPressed: () {},
-                              style: OutlinedButton.styleFrom(
-                                elevation: 0,
-                                side: const BorderSide(
-                                  color: Color.fromRGBO(196, 144, 33, 1),
-                                  width: 1.0,
+                        Expanded(
+                          child: FadeInDown(
+                            animate: animate,
+                            duration: const Duration(milliseconds: 750),
+                            delay: const Duration(seconds: 0),
+                            child: SizedBox(
+                              height: 26.0,
+                              child: OutlinedButton(
+                                onPressed: () {},
+                                style: OutlinedButton.styleFrom(
+                                  elevation: 0,
+                                  side: const BorderSide(
+                                    color: Color.fromRGBO(196, 144, 33, 1),
+                                    width: 1.0,
+                                  ),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(5.0),
+                                  ),
                                 ),
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(5.0),
-                                ),
-                              ),
-                              child: const Text(
-                                "Deixar de seguir",
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w900,
-                                  fontSize: 12,
-                                  color: Color.fromRGBO(196, 144, 33, 1),
+                                child: const Text(
+                                  "Deixar de seguir",
+                                  overflow: TextOverflow.ellipsis,
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w900,
+                                    fontSize: 12,
+                                    color: Color.fromRGBO(196, 144, 33, 1),
+                                  ),
                                 ),
                               ),
                             ),
                           ),
                         ),
                       ],
-                    )
+                    ),
                   ],
                 ),
               ),

@@ -21,21 +21,21 @@ class _PagePesquisaState extends State<PagePesquisa> {
         child: Column(
           children: <Widget>[
             const SizedBox(height: 120.0),
-            Container(
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height * .85,
-              padding: const EdgeInsets.all(18.0),
-              decoration: const BoxDecoration(
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(20),
-                  topRight: Radius.circular(20),
-                ),
-                color: Colors.white,
-              ),
-              child: FadeInUp(
+            FadeInUp(
                 animate: animate,
                 duration: const Duration(milliseconds: 500),
                 delay: const Duration(seconds: 0),
+              child: Container(
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height * .85,
+                padding: const EdgeInsets.all(18.0),
+                decoration: const BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(20),
+                    topRight: Radius.circular(20),
+                  ),
+                  color: Colors.white,
+                ),
                 child: Column(
                   children: <Widget>[
                     FadeInDown(
