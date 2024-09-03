@@ -65,7 +65,7 @@ class _PageSplashState extends State<PageSplash> with TickerProviderStateMixin {
               FadeInUp(
                 animate: animate,
                 duration: const Duration(milliseconds: 500),
-                delay: const Duration(seconds: 1),
+                delay: const Duration(milliseconds: 500),
                 child: Image.asset("assets/image/vivaplay-logotipo.png"),
               ),
               Padding(
@@ -77,7 +77,7 @@ class _PageSplashState extends State<PageSplash> with TickerProviderStateMixin {
                     FadeInUp(
                       animate: animate,
                       duration: const Duration(milliseconds: 650),
-                      delay: const Duration(seconds: 1),
+                      delay: const Duration(milliseconds: 500),
                       child: SizedBox(
                         width: 152,
                         child: LinearProgressIndicator(
@@ -96,7 +96,7 @@ class _PageSplashState extends State<PageSplash> with TickerProviderStateMixin {
                     FadeInUp(
                       animate: animate,
                       duration: const Duration(milliseconds: 800),
-                      delay: const Duration(seconds: 1),
+                      delay: const Duration(milliseconds: 500),
                       child: const Text(
                         "Por favor, aguarde...",
                         style: TextStyle(

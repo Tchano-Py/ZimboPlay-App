@@ -30,7 +30,7 @@ CustomTransitionPage myPageTransition<T>({
 }
 
 final router = GoRouter(
-  initialLocation: '/login',
+  initialLocation: '/layout_main',
   routes: <RouteBase>[
     GoRoute(
       path: '/',

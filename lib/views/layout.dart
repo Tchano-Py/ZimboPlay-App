@@ -39,7 +39,7 @@ class _LayoutMainState extends State<LayoutMain> {
           children: <Widget>[
             _widgetpage[_selectedIndex],
             const Positioned(
-              top: 32,
+              top: 42,
               left: 0,
               right: 0,
               child: MyAppBar(),

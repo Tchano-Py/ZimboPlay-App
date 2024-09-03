@@ -22,9 +22,9 @@ class _PageLoginState extends State<PageLogin> {
         child: Align(
           alignment: Alignment.bottomCenter,
           child: FadeInUp(
-            animate: animate,
-            duration: const Duration(seconds: 1),
-            delay: const Duration(seconds: 1),
+            animate: animate, 
+            duration: const Duration(milliseconds: 500),
+            delay: const Duration(seconds: 0),
             child: Container(
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height * .85,
@@ -42,8 +42,8 @@ class _PageLoginState extends State<PageLogin> {
                   children: <Widget>[
                     FadeInDown(
                       animate: animate,
-                      duration: const Duration(milliseconds: 600),
-                      delay: const Duration(seconds: 2),
+                      duration: const Duration(milliseconds: 700),
+                      delay: const Duration(seconds: 1),
                       child: Padding(
                         padding: EdgeInsets.only(
                           top: MediaQuery.of(context).size.height * .06,
@@ -55,8 +55,8 @@ class _PageLoginState extends State<PageLogin> {
                     ),
                     FadeInDown(
                       animate: animate,
-                      duration: const Duration(milliseconds: 700),
-                      delay: const Duration(seconds: 2),
+                      duration: const Duration(milliseconds: 800),
+                      delay: const Duration(seconds: 1),
                       child: const Text(
                         "Acesse a sua conta para desfrutar do melhor que há!",
                         style: TextStyle(
@@ -70,8 +70,8 @@ class _PageLoginState extends State<PageLogin> {
                     ),
                     FadeInDown(
                       animate: animate,
-                      duration: const Duration(milliseconds: 800),
-                      delay: const Duration(seconds: 2),
+                      duration: const Duration(milliseconds: 900),
+                      delay: const Duration(seconds: 1),
                       child: const Padding(
                         padding: EdgeInsets.only(
                           top: 30,
@@ -108,8 +108,8 @@ class _PageLoginState extends State<PageLogin> {
                     ),
                     FadeInDown(
                       animate: animate,
-                      duration: const Duration(milliseconds: 900),
-                      delay: const Duration(seconds: 2),
+                      duration: const Duration(milliseconds: 1000),
+                      delay: const Duration(seconds: 1),
                       child: Row(
                         children: [
                           Expanded(
@@ -171,8 +171,8 @@ class _PageLoginState extends State<PageLogin> {
                     ),
                     FadeInDown(
                       animate: animate,
-                      duration: const Duration(milliseconds: 1000),
-                      delay: const Duration(seconds: 2),
+                      duration: const Duration(milliseconds: 1100),
+                      delay: const Duration(seconds: 1),
                       child: Form(
                         key: _formKey,
                         child: Column(
