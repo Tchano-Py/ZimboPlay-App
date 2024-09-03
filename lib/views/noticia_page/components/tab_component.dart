@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:animate_do/animate_do.dart';
 import 'package:zimbo_play/services/data/data_noticias.dart';
 import 'package:zimbo_play/views/widget/my_card_item.dart';
 
@@ -12,6 +13,8 @@ class TabComponent extends StatefulWidget {
 }
 
 class _TabComponentState extends State<TabComponent> {
+  bool animate = true;
+
   @override
   Widget build(BuildContext context) {
     List<Noticia> noticiasFiltradas = noticias
@@ -22,13 +25,19 @@ class _TabComponentState extends State<TabComponent> {
       itemCount: noticiasFiltradas.length,
       itemBuilder: (context, index) {
         final noticia = noticiasFiltradas[index];
-        return Padding(
-          padding: const EdgeInsets.only(bottom: 5.0),
-          child: MyCardItem(
-            image: noticia.image,
-            title: noticia.titulo,
-            time: noticia.data,
-            topic: noticia.tipos,
+        int time = 800 + (index * 100);
+        return FadeInDown(
+          animate: animate,
+          duration: Duration(milliseconds: time),
+          delay: const Duration(seconds: 0),
+          child: Padding(
+            padding: const EdgeInsets.only(bottom: 5.0),
+            child: MyCardItem(
+              image: noticia.image,
+              title: noticia.titulo,
+              time: noticia.data,
+              topic: noticia.tipos,
+            ),
           ),
         );
       },
