@@ -20,6 +20,7 @@ dependencies:
   flick_video_player: ^0.9.0
   shared_preferences: ^2.3.2
   animate_do: ^3.3.4
+  animated_text_kit: ^4.2.2
 
 dev_dependencies:
   flutter_test:
