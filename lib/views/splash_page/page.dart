@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:animate_do/animate_do.dart';
 
 class PageSplash extends StatefulWidget {
   const PageSplash({super.key});
@@ -31,7 +30,7 @@ class _PageSplashState extends State<PageSplash> with TickerProviderStateMixin {
       });
     controller.repeat(reverse: true);
 
-    Future.delayed(const Duration(seconds: 5), () {
+    Future.delayed(const Duration(seconds: 7), () {
       if (mounted) {
         context.go('/login');
       }
@@ -57,16 +56,16 @@ class _PageSplashState extends State<PageSplash> with TickerProviderStateMixin {
           ),
         ),
         child: Padding(
-          padding: const EdgeInsets.only(left: 10, bottom: 32.0),
+          padding: EdgeInsets.only(left: 10, bottom: MediaQuery.of(context).size.height * 0.055),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.end,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              FadeInUp(
-                animate: animate,
-                duration: const Duration(milliseconds: 500),
-                delay: const Duration(milliseconds: 500),
-                child: Image.asset("assets/image/vivaplay-logotipo.png"),
+              Image.asset(
+                "assets/image/vivaplay-logotipo.png",
+                width: MediaQuery.of(context).size.width * 0.4,
+                //height: MediaQuery.of(context).size.height * 0.1,
+                fit: BoxFit.contain,
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
@@ -74,37 +73,27 @@ class _PageSplashState extends State<PageSplash> with TickerProviderStateMixin {
                   mainAxisAlignment: MainAxisAlignment.end,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    FadeInUp(
-                      animate: animate,
-                      duration: const Duration(milliseconds: 650),
-                      delay: const Duration(milliseconds: 500),
-                      child: SizedBox(
-                        width: 152,
-                        child: LinearProgressIndicator(
-                          backgroundColor:
-                              const Color.fromRGBO(196, 196, 196, .3),
-                          valueColor: const AlwaysStoppedAnimation<Color>(
-                              Color(0xFFC49021)),
-                          minHeight: 8,
-                          value: controller.value,
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(30)),
-                          semanticsLabel: 'Linear progress indicator',
-                        ),
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.4,
+                      child: LinearProgressIndicator(
+                        backgroundColor:
+                            const Color.fromRGBO(196, 196, 196, .3),
+                        valueColor: const AlwaysStoppedAnimation<Color>(
+                            Color(0xFFC49021)),
+                        minHeight: 8,
+                        value: controller.value,
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(30)),
+                        semanticsLabel: 'Linear progress indicator',
                       ),
                     ),
-                    FadeInUp(
-                      animate: animate,
-                      duration: const Duration(milliseconds: 800),
-                      delay: const Duration(milliseconds: 500),
-                      child: const Text(
-                        "Por favor, aguarde...",
-                        style: TextStyle(
-                          color: Color(0xFF737554),
-                          fontSize: 12,
-                          height: 2.03,
-                          fontWeight: FontWeight.w500,
-                        ),
+                    const Text(
+                      "Por favor, aguarde...",
+                      style: TextStyle(
+                        color: Color(0xFF737554),
+                        fontSize: 12,
+                        height: 2.03,
+                        fontWeight: FontWeight.w500,
                       ),
                     ),
                   ],
@@ -114,18 +103,6 @@ class _PageSplashState extends State<PageSplash> with TickerProviderStateMixin {
           ),
         ),
       ),
-    );
-  }
-}
-
-class Square extends StatelessWidget {
-  const Square({super.key});
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 50,
-      height: 50,
-      color: Colors.blueAccent,
     );
   }
 }

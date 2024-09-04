@@ -8,6 +8,11 @@ class MyAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     bool animate = true;
 
+    double screenHeight = MediaQuery.of(context).size.height;
+    double responsiveHeight = screenHeight * 0.1;
+    double maxHeight = 70.0;
+    double height = responsiveHeight < maxHeight ? responsiveHeight : maxHeight;
+
     return FadeInDown(
       animate: animate,
       duration: const Duration(milliseconds: 500),
@@ -15,7 +20,7 @@ class MyAppBar extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16.6),
         child: Container(
-          height: 70.0,
+          height: height,
           width: MediaQuery.of(context).size.width,
           decoration: const BoxDecoration(
             color: Color.fromRGBO(255, 255, 255, 1),
@@ -25,8 +30,8 @@ class MyAppBar extends StatelessWidget {
             padding: const EdgeInsets.only(
               left: 5.0,
               right: 18.0,
-              bottom: 16.0,
-              top: 16.0,
+              bottom: 14.0,
+              top: 14.0,
             ),
             child: Row(
               children: <Widget>[
@@ -35,7 +40,8 @@ class MyAppBar extends StatelessWidget {
                   child: Align(
                     alignment: Alignment.centerLeft,
                     child: Image.asset(
-                      'assets/image/vivaplay-logotipo-menu.png',
+                      'assets/image/vivaplay-logotipo-menu.png', 
+                      fit: BoxFit.contain,
                     ),
                   ),
                 ),
