@@ -56,7 +56,8 @@ class _PageSplashState extends State<PageSplash> with TickerProviderStateMixin {
           ),
         ),
         child: Padding(
-          padding: EdgeInsets.only(left: 10, bottom: MediaQuery.of(context).size.height * 0.055),
+          padding: EdgeInsets.only(
+              left: 10, bottom: MediaQuery.of(context).size.height * 0.055),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.end,
             crossAxisAlignment: CrossAxisAlignment.start,
