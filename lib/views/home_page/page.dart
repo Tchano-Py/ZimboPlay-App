@@ -43,7 +43,7 @@ class _PageHomeState extends State<PageHome> {
               delay: const Duration(seconds: 0),
               child: Container(
                 width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height * .85,
+                height: MediaQuery.of(context).size.height,
                 padding: const EdgeInsets.all(18.0),
                 decoration: const BoxDecoration(
                   borderRadius: BorderRadius.only(

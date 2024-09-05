@@ -1,9 +1,11 @@
+import 'dart:async';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:animate_do/animate_do.dart';
 import 'package:flick_video_player/flick_video_player.dart';
 import 'package:video_player/video_player.dart';
+import 'package:animated_flip_counter/animated_flip_counter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:zimbo_play/views/ao_vivo_page/components/expandable_text.dart';
 import 'package:zimbo_play/views/ao_vivo_page/components/list_program.dart';
@@ -18,6 +20,9 @@ class PageAoVivo extends StatefulWidget {
 class _PageAoVivoState extends State<PageAoVivo> {
   late FlickManager _controller;
   bool animate = true;
+  int numView = 26;
+  Timer? incrementTimer;
+  Timer? decrementTimer;
 
   //Salvar o tempo do video(onde parai de ver)
   void _saveVideoPosition(Duration position) async {
@@ -35,6 +40,21 @@ class _PageAoVivoState extends State<PageAoVivo> {
     }
   }
 
+  // Função para as contagnens das views
+  void _startTimers() { 
+    incrementTimer = Timer.periodic(const Duration(seconds: 7), (timer) {
+      setState(() {
+        numView += 1;
+      });
+    });
+ 
+    decrementTimer = Timer.periodic(const Duration(seconds: 21), (timer) {
+      setState(() {
+        numView -= 1;
+      });
+    });
+  }
+
   @override
   void initState() {
     super.initState();
@@ -47,6 +67,7 @@ class _PageAoVivoState extends State<PageAoVivo> {
               });
             }),
     );
+    _startTimers(); 
   }
 
   @override
@@ -63,7 +84,7 @@ class _PageAoVivoState extends State<PageAoVivo> {
               delay: const Duration(seconds: 0),
               child: Container(
                 width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height * .85,
+                height: MediaQuery.of(context).size.height,
                 decoration: const BoxDecoration(
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(20),
@@ -78,7 +99,7 @@ class _PageAoVivoState extends State<PageAoVivo> {
                       duration: const Duration(milliseconds: 600),
                       delay: const Duration(seconds: 0),
                       child: AspectRatio(
-                        aspectRatio: 16 / 10,
+                        aspectRatio: 16 / 9,
                         child: Container(
                           decoration: const BoxDecoration(
                             borderRadius: BorderRadius.only(
@@ -137,105 +158,109 @@ class _PageAoVivoState extends State<PageAoVivo> {
                     const SizedBox(
                       height: 6,
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(18.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          FadeInDown(
-                            animate: animate,
-                            duration: const Duration(milliseconds: 700),
-                            delay: const Duration(seconds: 0),
-                            child: Row(
-                              children: <Widget>[
-                                const Expanded(
-                                  child: Text(
-                                    "Sexto Sentido",
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.w700,
-                                      fontSize: 20,
-                                      color: Color.fromRGBO(115, 117, 84, 1),
+                    Expanded(
+                      child: SingleChildScrollView(
+                        padding: const EdgeInsets.all(18.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            FadeInDown(
+                              animate: animate,
+                              duration: const Duration(milliseconds: 700),
+                              delay: const Duration(seconds: 0),
+                              child: Row(
+                                children: <Widget>[
+                                  const Expanded(
+                                    child: Text(
+                                      "Sexto Sentido",
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.w700,
+                                        fontSize: 20,
+                                        color: Color.fromRGBO(115, 117, 84, 1),
+                                      ),
                                     ),
                                   ),
+                                  Image.asset("assets/image/eye.png"),
+                                  const SizedBox(width: 8),
+                                  AnimatedFlipCounter(
+                                    duration: const Duration(milliseconds: 500),
+                                    value: numView,
+                                    prefix: "+",
+                                    textStyle: const TextStyle(
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: 18,
+                                      color: Color.fromRGBO(196, 144, 33, 1),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            const SizedBox(height: 6),
+                            FadeInDown(
+                              animate: animate,
+                              duration: const Duration(milliseconds: 800),
+                              delay: const Duration(seconds: 0),
+                              child: const Expandabletext(
+                                maxLines: 3,
+                                text:
+                                    "É um programa audiovisual, da grelha de programação da estação televisiva TV Zimbo, que vai ao ar em direto, as 09 horas, e tem duração de 2 horas e 35 minutos, apresentado pela carismatica, Dina Simão, conta com companhia da  Mimi (assistente de estudio), que esta sempre bem humorada, disposta a  contagiar com a sua alegria os convidados e os telespectadores. O programa matinal da TV Zimbo (Sexto Sentido), conta ainda com bons convidados, surpresas, e rubricas, que não vais querer perder.",
+                                textStyle: TextStyle(
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 13,
+                                  color: Color.fromRGBO(115, 115, 84, 1),
                                 ),
-                                Image.asset("assets/image/eye.png"),
-                                const SizedBox(width: 8),
-                                const Text(
-                                  "+17",
+                                fadedTextStyle: TextStyle(
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 13,
+                                  color: Color.fromRGBO(115, 115, 84, 0.0),
+                                ),
+                              ),
+                            ),
+                            const SizedBox(height: 4),
+                            FadeInDown(
+                              animate: animate,
+                              duration: const Duration(milliseconds: 900),
+                              delay: const Duration(seconds: 0),
+                              child: ElevatedButton(
+                                onPressed: () {},
+                                style: ElevatedButton.styleFrom(
+                                  elevation: 0,
+                                  backgroundColor:
+                                      const Color.fromRGBO(196, 144, 33, 1),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(20.0),
+                                  ),
+                                  minimumSize: Size(
+                                      MediaQuery.of(context).size.width, 38),
+                                ),
+                                child: const Text(
+                                  "Ver agenda do programa",
                                   style: TextStyle(
                                     fontWeight: FontWeight.w700,
                                     fontSize: 18,
-                                    color: Color.fromRGBO(196, 144, 33, 1),
+                                    color: Colors.white,
                                   ),
                                 ),
-                              ],
-                            ),
-                          ),
-                          const SizedBox(height: 6),
-                          FadeInDown(
-                            animate: animate,
-                            duration: const Duration(milliseconds: 800),
-                            delay: const Duration(seconds: 0),
-                            child: const Expandabletext(
-                              maxLines: 3,
-                              text:
-                                  "É um programa audiovisual, da grelha de programação da estação televisiva TV Zimbo, que vai ao ar em direto, as 09 horas, e tem duração de 2 horas e 35 minutos, apresentado pela carismatica, Dina Simão, conta com companhia da  Mimi (assistente de estudio), que esta sempre bem humorada, disposta a  contagiar com a sua alegria os convidados e os telespectadores. O programa matinal da TV Zimbo (Sexto Sentido), conta ainda com bons convidados, surpresas, e rubricas, que não vais querer perder.",
-                              textStyle: TextStyle(
-                                fontWeight: FontWeight.w400,
-                                fontSize: 13,
-                                color: Color.fromRGBO(115, 115, 84, 1),
-                              ),
-                              fadedTextStyle: TextStyle(
-                                fontWeight: FontWeight.w400,
-                                fontSize: 13,
-                                color: Color.fromRGBO(115, 115, 84, 0.0),
                               ),
                             ),
-                          ),
-                          const SizedBox(height: 4),
-                          FadeInDown(
-                            animate: animate,
-                            duration: const Duration(milliseconds: 900),
-                            delay: const Duration(seconds: 0),
-                            child: ElevatedButton(
-                              onPressed: () {},
-                              style: ElevatedButton.styleFrom(
-                                elevation: 0,
-                                backgroundColor:
-                                    const Color.fromRGBO(196, 144, 33, 1),
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(20.0),
-                                ),
-                                minimumSize:
-                                    Size(MediaQuery.of(context).size.width, 38),
-                              ),
+                            const SizedBox(height: 26),
+                            FadeInDown(
+                              animate: animate,
+                              duration: const Duration(milliseconds: 1000),
+                              delay: const Duration(seconds: 0),
                               child: const Text(
-                                "Ver agenda do programa",
+                                "Programação completa",
                                 style: TextStyle(
                                   fontWeight: FontWeight.w700,
-                                  fontSize: 18,
-                                  color: Colors.white,
+                                  fontSize: 20,
+                                  color: Color.fromRGBO(34, 34, 34, 1),
                                 ),
                               ),
                             ),
-                          ),
-                          const SizedBox(height: 26),
-                          FadeInDown(
-                            animate: animate,
-                            duration: const Duration(milliseconds: 1000),
-                            delay: const Duration(seconds: 0),
-                            child: const Text(
-                              "Programação completa",
-                              style: TextStyle(
-                                fontWeight: FontWeight.w700,
-                                fontSize: 20,
-                                color: Color.fromRGBO(34, 34, 34, 1),
-                              ),
-                            ),
-                          ),
-                          const SizedBox(height: 12),
-                          const ListProgram()
-                        ],
+                            const SizedBox(height: 12),
+                            const ListProgram(),
+                          ],
+                        ),
                       ),
                     ),
                   ],
